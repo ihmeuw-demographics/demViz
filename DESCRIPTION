@@ -32,5 +32,5 @@ Imports:
     ggplot2,
     scales
 Remotes:
-    ihmeuw-demographics/demViz,
+    ihmeuw-demographics/demCore,
     ihmeuw-demographics/hierarchyUtils
