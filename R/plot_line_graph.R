@@ -213,7 +213,7 @@ plot_line_graph <- function(dt,
   # create group aesthetic
   group_cols <- NULL
   if (!is.null(aesthetics)) {
-    cols <- sapply(scale_manual, function(s) s[["col"]])
+    cols <- unique(sapply(scale_manual, function(s) s[["col"]]))
     if (length(cols) == 1) {
       group_cols <- cols
     } else {
