@@ -20,8 +20,17 @@ Suggests:
     knitr,
     rmarkdown,
     spelling,
-    covr
+    covr,
+    demCore,
+    hierarchyUtils
 VignetteBuilder: knitr
 Language: en-US
 Imports:
-    data.table
+    data.table,
+    assertive,
+    assertthat,
+    ggplot2,
+    scales
+Remotes:
+    ihmeuw-demographics/demViz,
+    ihmeuw-demographics/hierarchyUtils
