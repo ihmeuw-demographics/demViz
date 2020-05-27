@@ -114,5 +114,5 @@ plot_line_graph(
 
 }
 \seealso{
-\code{\link{vignette("plot_line_graph")}}
+\code{vignette("plot_line_graph")}
 }
