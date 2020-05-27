@@ -1,7 +1,7 @@
 Package: demViz
 Version: 0.0.0.9000
-Title: Data visualization functions for demography, public health and the social 
-    sciences
+Title: Data Visualization Functions for Demography, Public Health and the Social
+    Sciences
 Description: Visualization functions for demographic data and estimates in the 
     fields of demography, public health and the social sciences.
 Authors@R: c(person("Charlton", "Callender", email = "chacalle@uw.edu", role = "aut"),
