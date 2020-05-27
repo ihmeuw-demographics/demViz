@@ -62,7 +62,7 @@
 #'
 #' @return \[`ggplot()`\] object
 #'
-#' @seealso [`vignette("plot_line_graph")`]
+#' @seealso `vignette("plot_line_graph")`
 #'
 #' @examples
 #' plot_line_graph(
