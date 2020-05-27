@@ -29,21 +29,21 @@
 #'   Name of the column in `dt` that corresponds to the upper bound of the
 #'   `y_col` variable. Default is NULL and is not plotted.
 #' @param ribbon_alpha \[`numeric(1)`\]\cr
-#'   The alpha value for the `geom_ribbon` call. Default is '0.2'.
+#'   The alpha value for the `ggplot2::geom_ribbon` call. Default is '0.2'.
 #' @param point_col \[`character(1)`\]\cr
 #'   Name of the column in `dt` that differentiates between values that should
 #'   be plotted as a line versus a point. This column should be made up of
 #'   logical values, with 'TRUE' indicating a point.
 #' @param facet_type \[`character(1)`\]\cr
-#'   Whether to use `facet_wrap` ('wrap') or `facet_grid` ('grid'). Default is
-#'   'grid'.
+#'   Whether to use `gplot2::facet_wrap` ('wrap') or `gplot2::facet_grid`
+#'   ('grid'). Default is 'grid'. Can be NULL if no faceting is required.
 #' @param facet_form \[`character(1)`\]\cr
 #'   String representing the formula that defines the rows and/or columns in the
 #'   facet call.
 #' @param facet_scales \[`character(1)`\]\cr
-#'   `scales` argument to `facet_wrap` or `facet_grid`. Should scales be fixed
-#'   ("fixed", the default), free ("free"), or free in one dimension
-#'   ("free_x", "free_y")? Default is 'free_y'.
+#'   `scales` argument to `gplot2::facet_wrap` or `gplot2::facet_grid`. Should
+#'   scales be 'fixed, 'free', or free in one dimension ('free_x', 'free_y')?
+#'   Default is 'free_y'.
 #' @param scale_manual \[`list(1)`\]\cr
 #'   Defines the manual accessory aesthetics to be used when plotting the lines
 #'   (and points). See **Details**.
@@ -61,6 +61,8 @@
 #' columns since each combination of those should be plotted separately.
 #'
 #' @return \[`ggplot()`\] object
+#'
+#' @seealso [`vignette("plot_line_graph")`]
 #'
 #' @examples
 #' plot_line_graph(

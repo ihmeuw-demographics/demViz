@@ -54,7 +54,7 @@ Name of the column in \code{dt} that corresponds to the upper bound of the
 \code{y_col} variable. Default is NULL and is not plotted.}
 
 \item{ribbon_alpha}{[\code{numeric(1)}]\cr
-The alpha value for the \code{geom_ribbon} call. Default is '0.2'.}
+The alpha value for the \code{ggplot2::geom_ribbon} call. Default is '0.2'.}
 
 \item{point_col}{[\code{character(1)}]\cr
 Name of the column in \code{dt} that differentiates between values that should
@@ -62,17 +62,17 @@ be plotted as a line versus a point. This column should be made up of
 logical values, with 'TRUE' indicating a point.}
 
 \item{facet_type}{[\code{character(1)}]\cr
-Whether to use \code{facet_wrap} ('wrap') or \code{facet_grid} ('grid'). Default is
-'grid'.}
+Whether to use \code{gplot2::facet_wrap} ('wrap') or \code{gplot2::facet_grid}
+('grid'). Default is 'grid'. Can be NULL if no faceting is required.}
 
 \item{facet_form}{[\code{character(1)}]\cr
 String representing the formula that defines the rows and/or columns in the
 facet call.}
 
 \item{facet_scales}{[\code{character(1)}]\cr
-\code{scales} argument to \code{facet_wrap} or \code{facet_grid}. Should scales be fixed
-("fixed", the default), free ("free"), or free in one dimension
-("free_x", "free_y")? Default is 'free_y'.}
+\code{scales} argument to \code{gplot2::facet_wrap} or \code{gplot2::facet_grid}. Should
+scales be 'fixed, 'free', or free in one dimension ('free_x', 'free_y')?
+Default is 'free_y'.}
 
 \item{scale_manual}{[\code{list(1)}]\cr
 Defines the manual accessory aesthetics to be used when plotting the lines
@@ -112,4 +112,7 @@ plot_line_graph(
   facet_form = "age_start ~ ."
 )
 
+}
+\seealso{
+\code{\link{vignette("plot_line_graph")}}
 }
