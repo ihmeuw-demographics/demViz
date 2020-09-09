@@ -22,7 +22,8 @@ Suggests:
     spelling,
     covr,
     demCore,
-    hierarchyUtils
+    hierarchyUtils,
+    RColorBrewer
 VignetteBuilder: knitr
 Language: en-US
 Imports:
