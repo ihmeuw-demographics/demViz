@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create basic ggplot2 line graph — plot_line_graph • demViz</title>
+<title>Validate plot arguments — validate_plot_args • demViz</title>
 
 
 <!-- jquery -->
@@ -39,13 +39,9 @@
 
 
 
-<meta property="og:title" content="Create basic ggplot2 line graph — plot_line_graph" />
-<meta property="og:description" content="Create a basic ggplot2 line graph with the option to also add
-points. This could be used for plotting time series or age patterns for
-different parameters. One could just use their own ggplot syntax to make
-these graphs but this function provides a basic structure that encourages
-improved formatting (requires axis titles, uses commas for the y-axis values
-etc.)" />
+<meta property="og:title" content="Validate plot arguments — validate_plot_args" />
+<meta property="og:description" content="Helper function for common validations to demViz plotting
+functions. Also includes prep of aesthetics input." />
 
 
 
@@ -125,35 +121,32 @@ etc.)" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create basic ggplot2 line graph</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ihmeuw-demographics/demViz/blob/master/R/plot_line_graph.R'><code>R/plot_line_graph.R</code></a></small>
-    <div class="hidden name"><code>plot_line_graph.Rd</code></div>
+    <h1>Validate plot arguments</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ihmeuw-demographics/demViz/blob/master/R/validations.R'><code>R/validations.R</code></a></small>
+    <div class="hidden name"><code>validate_plot_args.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a basic ggplot2 line graph with the option to also add
-points. This could be used for plotting time series or age patterns for
-different parameters. One could just use their own ggplot syntax to make
-these graphs but this function provides a basic structure that encourages
-improved formatting (requires axis titles, uses commas for the y-axis values
-etc.)</p>
+    <p>Helper function for common validations to demViz plotting
+functions. Also includes prep of <code>aesthetics</code> input.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_line_graph</span>(
+    <pre class="usage"><span class='fu'>validate_plot_args</span>(
   <span class='kw'>dt</span>,
   <span class='kw'>plot_title</span>,
   <span class='kw'>x_col</span>,
   <span class='kw'>x_axis_title</span>,
   <span class='kw'>y_col</span>,
   <span class='kw'>y_axis_title</span>,
-  y_axis_commas = <span class='fl'>FALSE</span>,
+  y_axis_commas = <span class='kw'>NULL</span>,
   y_lb = <span class='kw'>NULL</span>,
   y_ub = <span class='kw'>NULL</span>,
-  ribbon_alpha = <span class='fl'>0.2</span>,
+  ribbon_alpha = <span class='kw'>NULL</span>,
   point_col = <span class='kw'>NULL</span>,
-  facet_type = <span class='st'>"grid"</span>,
-  facet_form = <span class='st'>"age_name ~ sex"</span>,
-  facet_scales = <span class='st'>"free_y"</span>,
+  equivalence_line = <span class='kw'>NULL</span>,
+  facet_type = <span class='kw'>NULL</span>,
+  facet_form = <span class='kw'>NULL</span>,
+  facet_scales = <span class='kw'>NULL</span>,
   scale_manual = <span class='kw'>NULL</span>
 )</pre>
 
@@ -221,6 +214,12 @@ be plotted as a line versus a point. This column should be made up of
 logical values, with 'TRUE' indicating a point.</p></td>
     </tr>
     <tr>
+      <th>equivalence_line</th>
+      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+Whether to add a line with slope 1 and intercept 0 to show where x = y.
+Default FALSE.</p></td>
+    </tr>
+    <tr>
       <th>facet_type</th>
       <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
 Whether to use <code>gplot2::facet_wrap</code> ('wrap') or <code>gplot2::facet_grid</code>
@@ -249,34 +248,8 @@ Defines the manual accessory aesthetics to be used when plotting the lines
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>[<code>ggplot()</code>] object</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <p>[<code><a href='https://rdrr.io/r/base/list.html'>list()</a></code>]<br /> aesthetics prepped</p>
 
-    <p>The <code>scale_manual</code> argument is a nested list of lists for each manual
-aesthetic applied. The first level of the list is the name of the aesthetic,
-the possible aethetics are 'colour', 'fill', 'alpha', 'shape', 'linetype',
-and 'size'. Each aesthetic must have a nested list that specifies the column
-in <code>dt</code> that the aesthetic corresponds to (<code>col</code>), the legend title for the
-aesthetic (<code>legend_title</code>), and the scale that maps values of the aesthetic
-to the values of the column in <code>dt</code> (<code>scale</code>).</p>
-<p>The groupings for lines and points will be determined by the <code>scale_manual</code>
-columns since each combination of those should be plotted separately.</p>
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='../articles/plot_line_graph.html'>vignette("plot_line_graph")</a></code></p></div>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>plot_line_graph</span>(
-  dt = <span class='kw'>demCore</span>::<span class='kw'><a href='https://rdrr.io/pkg/demCore/man/burkina_faso.html'>burkina_faso_initial_estimates</a></span><span class='op'>$</span><span class='kw'>asfr</span>,
-  plot_title = <span class='st'>"Burknia Faso ASFR"</span>,
-  x_col = <span class='st'>"year_start"</span>,
-  x_axis_title = <span class='st'>"Start of Year Interval"</span>,
-  y_col = <span class='st'>"value"</span>,
-  y_axis_title = <span class='st'>"ASFR"</span>,
-  facet_form = <span class='st'>"age_start ~ ."</span>
-)
-</div><div class='img'><img src='plot_line_graph-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

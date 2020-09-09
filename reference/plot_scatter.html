@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create basic ggplot2 line graph — plot_line_graph • demViz</title>
+<title>Create basic ggplot2 scatter — plot_scatter • demViz</title>
 
 
 <!-- jquery -->
@@ -39,13 +39,13 @@
 
 
 
-<meta property="og:title" content="Create basic ggplot2 line graph — plot_line_graph" />
-<meta property="og:description" content="Create a basic ggplot2 line graph with the option to also add
-points. This could be used for plotting time series or age patterns for
-different parameters. One could just use their own ggplot syntax to make
-these graphs but this function provides a basic structure that encourages
-improved formatting (requires axis titles, uses commas for the y-axis values
-etc.)" />
+<meta property="og:title" content="Create basic ggplot2 scatter — plot_scatter" />
+<meta property="og:description" content="Create a basic ggplot2 scatter plot with the option to also add
+a line of equivalence. This could be used for comparing two versions of
+the same model or a model and a comparator from another research group. One
+could just use their own ggplot syntax to make these graphs but this
+function provides a basic structure that encourages improved formatting
+(requires axis titles, uses commas for the y-axis values etc.)" />
 
 
 
@@ -125,21 +125,21 @@ etc.)" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create basic ggplot2 line graph</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ihmeuw-demographics/demViz/blob/master/R/plot_line_graph.R'><code>R/plot_line_graph.R</code></a></small>
-    <div class="hidden name"><code>plot_line_graph.Rd</code></div>
+    <h1>Create basic ggplot2 scatter</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ihmeuw-demographics/demViz/blob/master/R/plot_scatter.R'><code>R/plot_scatter.R</code></a></small>
+    <div class="hidden name"><code>plot_scatter.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Create a basic ggplot2 line graph with the option to also add
-points. This could be used for plotting time series or age patterns for
-different parameters. One could just use their own ggplot syntax to make
-these graphs but this function provides a basic structure that encourages
-improved formatting (requires axis titles, uses commas for the y-axis values
-etc.)</p>
+    <p>Create a basic ggplot2 scatter plot with the option to also add
+a line of equivalence. This could be used for comparing two versions of
+the same model or a model and a comparator from another research group. One
+could just use their own ggplot syntax to make these graphs but this
+function provides a basic structure that encourages improved formatting
+(requires axis titles, uses commas for the y-axis values etc.)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_line_graph</span>(
+    <pre class="usage"><span class='fu'>plot_scatter</span>(
   <span class='kw'>dt</span>,
   <span class='kw'>plot_title</span>,
   <span class='kw'>x_col</span>,
@@ -147,10 +147,7 @@ etc.)</p>
   <span class='kw'>y_col</span>,
   <span class='kw'>y_axis_title</span>,
   y_axis_commas = <span class='fl'>FALSE</span>,
-  y_lb = <span class='kw'>NULL</span>,
-  y_ub = <span class='kw'>NULL</span>,
-  ribbon_alpha = <span class='fl'>0.2</span>,
-  point_col = <span class='kw'>NULL</span>,
+  equivalence_line = <span class='fl'>FALSE</span>,
   facet_type = <span class='st'>"grid"</span>,
   facet_form = <span class='st'>"age_name ~ sex"</span>,
   facet_scales = <span class='st'>"free_y"</span>,
@@ -173,7 +170,7 @@ Overall title of the plot.</p></td>
     <tr>
       <th>x_col</th>
       <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
-Name of the column in <code>dt</code> that corresponds to x-value of each line.</p></td>
+Name of the column in <code>dt</code> that corresponds to x-value.</p></td>
     </tr>
     <tr>
       <th>x_axis_title</th>
@@ -183,7 +180,7 @@ X-axis title.</p></td>
     <tr>
       <th>y_col</th>
       <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
-Name of the column in <code>dt</code> that corresponds to y-value of each line.</p></td>
+Name of the column in <code>dt</code> that corresponds to y-value.</p></td>
     </tr>
     <tr>
       <th>y_axis_title</th>
@@ -197,28 +194,10 @@ Whether the y-axis scale labels should use comma formatting
 (scales::comma). Default is FALSE.</p></td>
     </tr>
     <tr>
-      <th>y_lb</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
-Name of the column in <code>dt</code> that corresponds to the lower bound of the
-<code>y_col</code> variable. Default is NULL and is not plotted.</p></td>
-    </tr>
-    <tr>
-      <th>y_ub</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
-Name of the column in <code>dt</code> that corresponds to the upper bound of the
-<code>y_col</code> variable. Default is NULL and is not plotted.</p></td>
-    </tr>
-    <tr>
-      <th>ribbon_alpha</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/numeric.html'>numeric(1)</a></code>]<br />
-The alpha value for the <code><a href='https://ggplot2.tidyverse.org/reference/geom_ribbon.html'>ggplot2::geom_ribbon</a></code> call. Default is '0.2'.</p></td>
-    </tr>
-    <tr>
-      <th>point_col</th>
-      <td><p>[<code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code>]<br />
-Name of the column in <code>dt</code> that differentiates between values that should
-be plotted as a line versus a point. This column should be made up of
-logical values, with 'TRUE' indicating a point.</p></td>
+      <th>equivalence_line</th>
+      <td><p>[<code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code>]<br />
+Whether to add a line with slope 1 and intercept 0 to show where x = y.
+Default FALSE.</p></td>
     </tr>
     <tr>
       <th>facet_type</th>
@@ -263,19 +242,23 @@ to the values of the column in <code>dt</code> (<code>scale</code>).</p>
 columns since each combination of those should be plotted separately.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='../articles/plot_line_graph.html'>vignette("plot_line_graph")</a></code></p></div>
+    <div class='dont-index'><p>This function follows similar syntax to <code><a href='plot_line_graph.html'>plot_line_graph()</a></code>. See
+<code><a href='../articles/plot_line_graph.html'>vignette("plot_line_graph")</a></code> for details.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>plot_line_graph</span>(
-  dt = <span class='kw'>demCore</span>::<span class='kw'><a href='https://rdrr.io/pkg/demCore/man/burkina_faso.html'>burkina_faso_initial_estimates</a></span><span class='op'>$</span><span class='kw'>asfr</span>,
-  plot_title = <span class='st'>"Burknia Faso ASFR"</span>,
-  x_col = <span class='st'>"year_start"</span>,
-  x_axis_title = <span class='st'>"Start of Year Interval"</span>,
-  y_col = <span class='st'>"value"</span>,
-  y_axis_title = <span class='st'>"ASFR"</span>,
+    <pre class="examples"><div class='input'><span class='kw'>dt1</span> <span class='op'>&lt;-</span> <span class='kw'>demCore</span>::<span class='kw'><a href='https://rdrr.io/pkg/demCore/man/burkina_faso.html'>burkina_faso_initial_estimates</a></span><span class='op'>$</span><span class='kw'>asfr</span>
+<span class='kw'>dt2</span> <span class='op'>&lt;-</span> <span class='kw'>demCore</span>::<span class='kw'><a href='https://rdrr.io/pkg/demCore/man/thailand.html'>thailand_initial_estimates</a></span><span class='op'>$</span><span class='kw'>asfr</span>
+<span class='kw'>dt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/merge.html'>merge</a></span>(<span class='kw'>dt1</span>, <span class='kw'>dt2</span>, by = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"year_start"</span>, <span class='st'>"year_end"</span>, <span class='st'>"age_start"</span>, <span class='st'>"age_end"</span>))
+<span class='fu'>plot_scatter</span>(
+  dt = <span class='kw'>dt</span>,
+  plot_title = <span class='st'>"ASFR: Burknia Faso vs Thailand"</span>,
+  x_col = <span class='st'>"value.x"</span>,
+  x_axis_title = <span class='st'>"Burkina Faso ASFR"</span>,
+  y_col = <span class='st'>"value.y"</span>,
+  y_axis_title = <span class='st'>"Thailand ASFR"</span>,
   facet_form = <span class='st'>"age_start ~ ."</span>
 )
-</div><div class='img'><img src='plot_line_graph-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='img'><img src='plot_scatter-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
