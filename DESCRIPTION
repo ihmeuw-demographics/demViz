@@ -35,3 +35,5 @@ Imports:
 Remotes:
     ihmeuw-demographics/demCore,
     ihmeuw-demographics/hierarchyUtils
+Depends: 
+    R (>= 2.10)
