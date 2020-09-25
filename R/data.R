@@ -17,6 +17,7 @@
 #'   - "stage_1" : first-stage results for multi-stage models
 #'   - "stage_2" : second-stage results for multi-stage models (commonly
 #'       space-time results)
+#'   - "unscaled" : final results prior to scaling
 #'   - "prior" : the prior to a Bayesian model
 #'   - "posterior" : the posterior from a Bayesian model
 #'   - "data" : input data

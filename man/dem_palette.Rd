@@ -17,6 +17,7 @@ A named list, where the names are:
 \item "stage_1" : first-stage results for multi-stage models
 \item "stage_2" : second-stage results for multi-stage models (commonly
 space-time results)
+\item "unscaled" : final results prior to scaling
 \item "prior" : the prior to a Bayesian model
 \item "posterior" : the posterior from a Bayesian model
 \item "data" : input data

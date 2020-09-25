@@ -13,6 +13,7 @@ dem_palette <- c(
   "unicef"       = "#99dcf7",        # light blue
   "stage_1"      = "#ff9a1a",        # orange
   "stage_2"      = "#c03a3b",        # red
+  "unscaled"     = "#984ea3",        # purple
   "prior"        = "#d99adb",        # pink
   "posterior"    = "#8d8ae0",        # lavendar
   "data"         = "#292c3d"        # dark grey
