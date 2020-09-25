@@ -7,17 +7,19 @@
 \format{
 A named list, where the names are:
 \itemize{
-\item "gbd_previous_cycle"
-\item "gbd_current"
-\item "gbd_recent"
-\item "vr"
-\item "hmd"
-\item "wpp"
-\item "stage_1"
-\item "stage_2"
-\item "prior"
-\item "posterior"
-\item "data"
+\item "gbd_previous_cycle" : final results for previous GBD release
+\item "gbd_current" : results for the current model
+\item "gbd_recent" : results for a compare version from the same GBD cycle
+\item "hmd" : Human Mortality Database comparator
+\item "wpp" : UN World Population Prospects comparator
+\item "us_census_bureau" : US Census Bureau comparator
+\item "unicef" : UNICEF comparator
+\item "stage_1" : first-stage results for multi-stage models
+\item "stage_2" : second-stage results for multi-stage models (commonly
+space-time results)
+\item "prior" : the prior to a Bayesian model
+\item "posterior" : the posterior from a Bayesian model
+\item "data" : input data
 }
 
 And the values are hex codes for colors to use for these data types.
@@ -29,5 +31,19 @@ dem_palette
 Palette which can be used as \code{values} argument to
 \code{ggplot2::scale_color_manual} or \code{ggplot2::scale_fill_manual}, and
 includes common GBD comparators and output types.
+}
+\examples{
+library(ggplot2)
+ggplot(data = data.frame(x = names(dem_palette)),
+       aes(y = 1, fill = x)) +
+       geom_bar() +
+       theme_minimal() +
+       scale_fill_manual(values = dem_palette) +
+       facet_grid(. ~ x) +
+       labs(y = "", fill = "", x = "") +
+       theme(axis.text.y = element_blank(),
+             axis.text.x = element_blank(),
+             legend.position = "none")
+
 }
 \keyword{datasets}

@@ -4,17 +4,18 @@ library(data.table)
 
 # set colors
 dem_palette <- c(
-  "gbd_previous_cycle" = "#e41a1c",  # red
-  "gbd_current"  = "#377eb8",        # blue
-  "gbd_recent"   = "#ff9a1a",        # orange
-  "vr"           = "#984ea3",        # purple
-  "hmd"          = "#b3adb4",        # grey
-  "wpp"          = "#4daf4a",        # green
-  "stage_1"      = "#3cf837",        # lime green
-  "stage_2"      = "#3326c7",        # royal blue
-  "prior"        = "#8d8ae0",        # lavendar
-  "posterior"    = "#d99adb",        # pink
-  "data"         = "#292c3d"         # dark grey
+  "gbd_previous_cycle" = "#CBE19A",  # light green
+  "gbd_current"  = "#57AF55",        # ihme green
+  "gbd_recent"   = "#256b23",        # dark green
+  "hmd"          = "#02028B",        # royal blue
+  "wpp"          = "#00A1D9",        # UN blue
+  "us_census_bureau" = "#132e50",    # dark blue
+  "unicef"       = "#99dcf7",        # light blue
+  "stage_1"      = "#ff9a1a",        # orange
+  "stage_2"      = "#c03a3b",        # red
+  "prior"        = "#d99adb",        # pink
+  "posterior"    = "#8d8ae0",        # lavendar
+  "data"         = "#292c3d"        # dark grey
 )
 
 # test
