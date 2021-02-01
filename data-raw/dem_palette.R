@@ -4,9 +4,9 @@ library(data.table)
 
 # set colors
 dem_palette <- c(
-  "gbd_previous_cycle" = "#CBE19A",  # light green
+  "gbd_previous_cycle" = "#4B2E83",  # UW purple
   "gbd_current"  = "#57AF55",        # ihme green
-  "gbd_recent"   = "#256b23",        # dark green
+  "gbd_recent"   = "#85754d",        # UW gold
   "hmd"          = "#02028B",        # royal blue
   "wpp"          = "#00A1D9",        # UN blue
   "us_census_bureau" = "#132e50",    # dark blue
